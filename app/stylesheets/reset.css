@@ -1,0 +1,13 @@
+
+#app, body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#app {
+    display: flex;
+}
+
+::-webkit-scrollbar { display: none; }

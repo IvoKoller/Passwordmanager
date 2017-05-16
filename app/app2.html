@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Hydrogen</title>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="unselectable">
+<header>
+<nav class="nav-extended light-blue lighten-1" style="position: relative;">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo center">Hydrogen</a> <!-- <img src="img/logo.png" alt="" class="logo center-align" style="width: 30px;"> -->
+        <ul class="side-nav" id="mobile-nav">
+            <li><a href="#dashboard">Dashboard</a></li>
+            <li><a href="#passwords">Passwords</a></li>
+            <li><a href="#settings">Settings</a></li>
+            <li><a href="#settings">Sync</a></li>
+        </ul>
+        <form style="position: absolute; width: 100%;">
+            <div class="input-field">
+                <i class="material-icons close-search">arrow_back</i>
+                <input id="search" type="search" class="center-align" required>
+                <label class="label-icon" for="search"><i class="material-icons">search</i></label>
+            </div>
+        </form>
+    </div>
+    <div class="nav-content">
+        <ul class="tabs tabs-transparent">
+            <li class="tab"><a href="#dashboard">Dashboard</a></li>
+            <li class="tab"><a class="active" href="#passwords">Passwords</a></li>
+            <li class="tab"><a href="#settings">Settings</a></li>
+        </ul>
+    </div>
+</nav>
+</header>
+<div class="overlay blue valign-wrapper">
+<div class="row center-align" >
+    <img src="img/logo.png" alt="" class="logo center-align" style="width: 90px;">
+    <div id="login" class="card hoverable" style="width:100%">
+        <div class="card-content row">
+            <div class="card-title col s12">
+                Welcome to Hydrogen
+                <div class="divider"></div>
+            </div>
+            <div class="col s12">
+                <form class="input-field" onfocusout="return focusOut()" onsubmit="return checkLogin()">
+                    <i class="material-icons prefix" id="lock">lock_outline</i>
+                    <input id="password" type="password" class="validate center-align">
+                    <label for="password">Master-password</label>
+                    <input type="submit" style="display: none" />
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<main class="blue" >
+    <div class="row">
+        <div id="dashboard" class="col s12">
+            <div class="card">
+                <div class="card-content row">
+                    <div class="card-title col s12">
+                        Dashboard
+                        <div class="divider"></div>
+                    </div>
+                    <div class="col s5">
+                        <span>Your security score:</span>
+                    </div>
+                    <div class="col s2">
+                        <span class="green-text center-align">76%</span>
+                    </div>
+                    <div class="col s5">
+                        <div class="progress grey lighten-2">
+                            <div class="determinate green" style="width: 70%"></div>
+                        </div>
+                    </div>
+                    <div class="col s12 grey-text">
+                        Improve your security by updating older passwords and/or
+                        generate complex passwords.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="passwords" class="col s12">
+            <ul id="database" class="collapsible popout" data-collapsible="accordion">
+                <li>
+                    <div class="collapsible-header">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                                <i class="fa fa-amazon circle orange valign" style="font-size: 23px;" aria-hidden="true"></i>
+                            </div>
+                            <div class="col s3">
+                                <span class="title">Amazon</span>
+                            </div>
+                            <div class="col s2">
+                                <i style="font-size: 2.3rem" class="material-icons green-text security">verified_user</i>
+                            </div>
+                            <div class="col s3">
+                                <div class="progress grey lighten-2 valign">
+                                    <div class="determinate green" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div class="col s2">
+                                <a href="#"><i class="material-icons right black-text arrow">keyboard_arrow_down</i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body white">
+                        <form class="row" style="margin-bottom: 0;">
+                            <div class="input-field col s12">
+                                <input class="url" value="http://www.amazon.com" placeholder="Placeholder" type="text" readonly>
+                                <label for="url">Url</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input class="email" value="username@provider.com" type="text" readonly>
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="input-field col s8">
+                                <input class="password" value="password" type="password" readonly>
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="input-field col s4">
+                                <a href="#!" class="waves-effect waves-teal btn-flat btn-floating right copyPaste">
+                                    <i class="material-icons black-text right">content_copy</i></a>
+                                <a href="#!" class="waves-effect waves-teal btn-flat btn-floating right eye">
+                                    <i class="fa fa-eye black-text" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col s12 grey-text">
+                                <p>Last changed: 24.Feb.2015</p>
+                            </div>
+                            <div class="col s7 offset-s5">
+                                <a href="#!" class="waves-effect waves-red btn-flat cancel" style="display: none;">Cancel</a>
+                                <a href="#!" class=" waves-effect waves-green btn-flat save" style="display: none;">Save</a>
+                                <a href="#!" class="waves-effect waves-teal btn-flat btn-floating right edit"><i class="material-icons black-text right">edit</i></a>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                                <i class="fa fa-google circle red valign" style="font-size: 23px;" aria-hidden="true"></i>
+                            </div>
+                            <div class="col s3">
+                                <span class="title">Google</span>
+                            </div>
+                            <div class="col s2">
+                                <i style="font-size: 2.3rem" class="material-icons orange-text security">warning</i>
+                            </div>
+                            <div class="col s3">
+                                <div class="progress grey lighten-2 valign">
+                                    <div class="determinate orange" style="width: 55%"></div>
+                                </div>
+                            </div>
+                            <div class="col s2">
+                                <a href="#"><i class="material-icons right black-text arrow">keyboard_arrow_down</i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body white">
+                        <form class="row" style="margin-bottom: 0;">
+                            <div class="input-field col s12">
+                                <input value="http://www.amazon.com" placeholder="Placeholder" type="text" readonly>
+                                <label for="url">Url</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input value="username@provider.com" type="text" readonly>
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="input-field col s8">
+                                <input class="password" value="password" type="password" readonly>
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="input-field col s4">
+                                <a href="#!" class="waves-effect waves-teal btn-flat btn-floating right copyPaste">
+                                    <i class="material-icons black-text right">content_copy</i></a>
+                                <a href="#!" class="waves-effect waves-teal btn-flat btn-floating right eye">
+                                    <i class="fa fa-eye black-text" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col s12 grey-text">
+                                <p>Last changed: 24.Feb.2015</p>
+                            </div>
+                            <div class="col s7 offset-s5">
+                                <a href="#!" class="waves-effect waves-red btn-flat cancel" style="display: none;">Cancel</a>
+                                <a href="#!" class=" waves-effect waves-green btn-flat save" style="display: none;">Save</a>
+                                <a href="#!" class="waves-effect waves-teal btn-flat btn-floating right edit"><i class="material-icons black-text right">edit</i></a>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header">
+                        <div class="row valign-wrapper">
+                            <div class="col s2">
+                                <i class="fa fa-twitter circle blue valign" style="font-size: 23px;" aria-hidden="true"></i>
+                            </div>
+                            <div class="col s3">
+                                <span class="title">Twitter</span>
+                            </div>
+                            <div class="col s2">
+                                <i style="font-size: 2.3rem" class="material-icons red-text security">report</i>
+                            </div>
+                            <div class="col s3">
+                                <div class="progress grey lighten-2 valign">
+                                    <div class="determinate red" style="width: 20%"></div>
+                                </div>
+                            </div>
+                            <div class="col s2">
+                                <a href="#"><i class="material-icons right black-text arrow">keyboard_arrow_down</i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body white">
+                        <form class="row" style="margin-bottom: 0;">
+                            <div class="input-field col s12">
+                                <input value="http://www.amazon.com" placeholder="Placeholder" type="text" readonly>
+                                <label for="url">Url</label>
+                            </div>
+                            <div class="input-field col s12">
+                                <input value="username@provider.com" type="text" readonly>
+                                <label for="username">Username</label>
+                            </div>
+                            <div class="input-field col s8">
+                                <input class="password" value="password" type="password" readonly>
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="input-field col s4">
+                                <a href="#!" class="waves-effect waves-teal btn-flat btn-floating right copyPaste">
+                                    <i class="material-icons black-text right">content_copy</i></a>
+                                <a href="#!" class="waves-effect waves-teal btn-flat btn-floating right eye">
+                                    <i class="fa fa-eye black-text" aria-hidden="true"></i></a>
+                            </div>
+                            <div class="col s12 grey-text">
+                                <p>Last changed: 24.Feb.2015</p>
+                            </div>
+                            <div class="col s7 offset-s5">
+                                <a href="#!" class="waves-effect waves-red btn-flat cancel" style="display: none;">Cancel</a>
+                                <a href="#!" class=" waves-effect waves-green btn-flat save" style="display: none;">Save</a>
+                                <a href="#!" class="waves-effect waves-teal btn-flat btn-floating right edit"><i class="material-icons black-text right">edit</i></a>
+                            </div>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="settings" class="col s12">
+            <div class="row">
+                <div class="col s12">
+                    <div class="card">
+                        <div class="card-content row">
+                            <div class="card-title col s12">
+                                Settings
+                                <div class="divider"></div>
+                            </div>
+                            <div class="col s12">
+                                <h5>General</h5>
+                            </div>
+                            <div class="col s9">
+                                Notifications
+                            </div>
+                            <div class="col s3">
+                                <div class="switch">
+                                    <label>
+                                        <input type="checkbox">
+                                        <span class="lever"></span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <h4>New Login</h4>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" class="validate">
+                        <label for="url">Website</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="text" class="validate">
+                        <label for="url">Username</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input type="password" class="validate">
+                        <label for="password">Password</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="progress col s12">
+                        <div class="determinate" style="width: 70%"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Save</a>
+          <a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">Cancel</a>
+      </div>
+    </div>
+
+    <div class="fixed-action-btn">
+        <a href="#modal1" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+    </div>
+</main>
+
+<footer class="page-footer light-blue darken-4" style="border-radius: 0px 0px 5px 5px">
+    <div class="footer-copyright">
+        <div class="container">
+            Made by <a class="light-blue-text text-lighten-3" href="http://ivokoller.com">Ivo Koller</a>
+        </div>
+    </div>
+</footer>
+
+<!--Handle js libraries: http://stackoverflow.com/questions/32621988/electron-jquery-is-not-defined -->
+<script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+<!--Import local JS, in order to work offline-->
+<!--Import jQuery before materialize.js-->
+<script type="text/javascript" src="libs/jquery-3.1.1.min.js"></script>
+<script type="text/javascript" src="libs/jquery-ui.min.js"></script>
+<script type="text/javascript" src="libs/materialize.min.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+<script>if (window.module) module = window.module;</script>
+
+</body>
+</html>
