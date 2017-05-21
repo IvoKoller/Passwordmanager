@@ -1,5 +1,4 @@
 import crypto from 'crypto';
-import store from './store';
 
 var config = {
     // size of the generated hash
@@ -152,7 +151,7 @@ function getRand(values) {
 * Fisher-Yates Shuffle
 * @ https://bost.ocks.org/mike/shuffle/
 * Interesting read: @ https://blog.codinghorror.com/the-danger-of-naivete/
-* @param {array} array An array containg elements to be shuffled (pass by refrence)
+* @param {array} array An array containing elements to be shuffled (pass by refrence)
 * @return {array} Shuffled array
 */
 
