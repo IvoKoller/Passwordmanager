@@ -1,16 +1,4 @@
-/*
- *  Passwordmanager
- *
- *  Created by Ivo Koller
- *  15.5.2017
- *
- */
-
-
 // Here is the starting point of the application code.
-
-// Needed for redux-saga es6 generator support
-import 'babel-polyfill';
 
 // Helpers
 import './helpers/context_menu.js';
