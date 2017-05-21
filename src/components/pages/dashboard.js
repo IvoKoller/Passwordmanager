@@ -74,7 +74,7 @@ export default class Dashboard extends React.Component {
                         </div>
                         <div style={{flex: 1}}>
                             <h1>Welcome!</h1>
-                            To the right you see your current security score. It
+                            To the left you see your current security score. It
                             tells you how safe your current passwords are. In order
                             to improve your security score, check the list of
                             issues below.

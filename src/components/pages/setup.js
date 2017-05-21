@@ -75,12 +75,12 @@ export default class Setup extends React.Component {
     //on submit,
     submit(){
         const app = remote.app;
-        const appDir = jetpack.cwd(app.getAppPath());
+        const appDir = jetpack.cwd(app.getAppPath('userData'));
         //hash password,
         hashPassword(this.state.firstPassword, (err, masterPassword)=>{
             //write to 'config.json'
-            appDir.write('app/config.json', { masterPassword })
-            //set in redux store
+            appDir.write('../config.json', { masterPassword })
+            //set to redux store
             this.props.dispatch(setHashedMasterPassword(masterPassword));
         });
 
@@ -91,7 +91,7 @@ export default class Setup extends React.Component {
         this.setState({start: true});
     }
 
-    render() {
+    render(){
         const faces = ['sentiment_very_dissatisfied', 'sentiment_dissatisfied',
             'sentiment_neutral', 'sentiment_satisfied', 'sentiment_very_satisfied'];
         const colors = [red500, deepOrange500, orange500, green500, lightGreen500];
@@ -112,14 +112,14 @@ export default class Setup extends React.Component {
                   mediaBackgroundStyle={{ backgroundColor: red400 }}
                   contentStyle={{ backgroundColor: red600 }}
                   title="Sick of forgetting your passwords?"
-                  subtitle="From now on you just have to remember one."
+                  subtitle="From now on you'll just have to remember one."
                 />
                 <Slide
                   media={<img src="img/generate.svg" />}
                   mediaStyle={{width: '50%', margin: '0 auto'}}
                   mediaBackgroundStyle={{ backgroundColor: amber400 }}
                   contentStyle={{ backgroundColor: amber600 }}
-                  title="Auto-generated Passwords"
+                  title="Auto-generated passwords"
                   subtitle="Why come up with new passwords? Let your computer do the work for you!"
                 />
                 <Slide
@@ -127,7 +127,7 @@ export default class Setup extends React.Component {
                   mediaStyle={{width: '50%', margin: '0 auto'}}
                   mediaBackgroundStyle={{ backgroundColor: blue300 }}
                   contentStyle={{ backgroundColor: blue600 }}
-                  title="Military-grade Encryption"
+                  title="Military grade encryption"
                   subtitle="All passwords are encrypted using AES-256."
                 />
               </AutoRotatingCarousel>

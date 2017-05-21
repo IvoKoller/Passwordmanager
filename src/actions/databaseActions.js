@@ -1,3 +1,5 @@
+import { remote } from 'electron';
+import jetpack from 'fs-jetpack';
 import zxcvbn from 'zxcvbn';
 import { encrypt, decrypt } from '../crypto';
 import Datastore from 'nedb';
@@ -21,8 +23,9 @@ var database;
 */
 
 export function load(){
+    const filename = remote.app.getAppPath('userData')+'./app/db/database.db';
     database = new Datastore({
-       filename: './app/db/database.db',
+       filename: filename,
        autoload: true,
        afterSerialization: encrypt,
        beforeDeserialization: decrypt,
@@ -36,8 +39,8 @@ export function load(){
 
 /**
 * Fetches data from the database.
-* Fetching from the NeDB database happens asyncronously, as redux works synchronously,
-* the thunk-middleware is utilized.
+* Fetching from the NeDB database happens asynchronously, as redux works synchronously,
+* the thunk-middleware is utilised.
 *
 * @param {object} query (optional) An object containing the field to query, if
 * left empty, all entries of the database are returned
@@ -81,7 +84,7 @@ export function fetch(query) {
 *
 * If fetching happens successfully, the function dispatches an action
 * of type 'UPDATE_SCORE', with an object containing the score, the number of weak
-* passwords and an array of the corrisponding weak entries as a payload.
+* passwords and an array of the corresponding weak entries as a payload.
 * Should something go wrong, it dispatches an action of type 'ERROR', with the error as a payload.
 * @returns {dispatchFunction}
 */

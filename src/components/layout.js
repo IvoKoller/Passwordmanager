@@ -93,8 +93,8 @@ export default class Layout extends React.Component {
     //check on application start if config-file exists
     componentWillMount(){
         const app = remote.app;
-        const appDir = jetpack.cwd(app.getAppPath());
-        const config = appDir.read('app/config.json', 'json');
+        const appDir = jetpack.cwd(app.getAppPath('userData'));
+        const config = appDir.read('../config.json', 'json');
         if(config !== undefined){ //check if file exists, if it does, set hashed Master Password
             this.props.dispatch(setHashedMasterPassword(new Buffer(config.masterPassword)));
         }
@@ -236,7 +236,7 @@ export default class Layout extends React.Component {
             else return <Login /> //if hashedMasterPassword present, show login
         } else{ //if logged in, show layout
             return(
-                <Paper style={{flex: 1, display: 'flex', height: '100%',flexDirection: 'row'}} rounded={false}>
+                <Paper style={{flex: 1, display: 'flex', height: '100%', flexDirection: 'row'}} rounded={false}>
                     <Paper rounded={false} style={{zIndex: 1}}>
                         <div style={{height: 150, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
                             <FontIcon className='material-icons' style={{color: this.props.theme.palette.alternateTextColor, borderRadius: 50,  background: this.props.theme.palette.primary1Color,  padding: 10, fontSize: 70, }}>lock</FontIcon>
@@ -278,14 +278,10 @@ export default class Layout extends React.Component {
                                     : null}
                                 showMenuIconButton={this.props.showSingleEntry}
                                 iconElementRight={this.rightIcon()}
-                                title={<span>{
-                                    this.props.showSingleEntry ?
-                                    this.props.activeEntry.title :
-                                    this.props.activePage.title
-                                }</span>}
+                                title={this.props.showSingleEntry ? this.props.activeEntry.title : this.props.activePage.title}
                             />
                         }
-                        <div style={{flex: 1, padding: 20, overflowY: 'scroll', background: this.props.theme.palette.secondaryCanvasColor }}>
+                        <div style={{flex: 1, padding: 20, overflowX: 'hide', overflowY: 'scroll', background: this.props.theme.palette.secondaryCanvasColor }}>
                             <Paper style={{padding: 20}}>
                                 {this.page()}
                             </Paper>

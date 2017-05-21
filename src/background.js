@@ -59,7 +59,7 @@ app.on('ready', () => {
 
     //prevent browserwindow from switching to url, if link is dropped.
     mainWindow.webContents.on('will-navigate', event => {
-        event.preventDefault()
+        event.preventDefault();
     })
 
     //open dev tools if application is in dev mode
