@@ -117,16 +117,12 @@ var createWindow = (function (name, options) {
 // The variables have been written to `env.json` by the build process.
 var env = jetpack.cwd(__dirname).read('env.json', 'json');
 
-// This is main process of Electron, started as first thing when your
-// app starts. This script is running through entire life of your application.
-// It doesn't have any windows which you can see on screen, but we can open
-// window from here.
+// This is main process of Electron, started as first thing when the
+// app starts. This script is running through entire life of the application.
 
-// Special module holding environment variables which you declared
-// in config/env_xxx.json file.
-// If Linux fix for transparency becomes avaiable activate code below
-// Don't downgrade to  since it isn't key
-// @https://github.com/electron/electron/issues/2170
+// Special module holding environment variables in config/env_xxx.json file.
+// If Linux fix for transparency becomes avaiable, the code below can be activated
+// see: @ https://github.com/electron/electron/issues/2170
 // if (process.platform === 'linux') {
 //     app.commandLine.appendSwitch('enable-transparent-visuals');
 //     app.commandLine.appendSwitch('disable-gpu');
@@ -149,35 +145,39 @@ if (env.name !== 'production') {
 }
 
 electron.app.on('ready', function () {
+    //load application menu
     setApplicationMenu();
 
     var mainWindow = createWindow('main', {
         'minWidth': 800,
         'minHeight': 740,
-        frame: false,
-        resizable: true,
-        show: false
-    });
-
+        frame: false, //hide frame
+        resizable: true, //make winodw resizable
+        show: false });
+    //load 'app.html'
     mainWindow.loadURL(url.format({
         pathname: path.join(__dirname, 'app.html'),
         protocol: 'file:',
         slashes: true
     }));
 
+    //show window once 'app.html' is loaded
     mainWindow.webContents.on('did-finish-load', function () {
         mainWindow.show();
     });
 
+    //prevent browserwindow from switching to url, if link is dropped.
     mainWindow.webContents.on('will-navigate', function (event) {
         event.preventDefault();
     });
 
+    //open dev tools if application is in dev mode
     if (env.name === 'development') {
         mainWindow.openDevTools();
     }
 });
 
+//quit application if all windows are closed
 electron.app.on('window-all-closed', function () {
     electron.app.quit();
 });
