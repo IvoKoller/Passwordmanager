@@ -1,6 +1,6 @@
 # Passwordmanager
-This is an offline password-manager using AES-256, that allows you to store your passwords safely on your machine, while still being able to access them using your hashed (PBKDF2) master-password. The Passwordmanager is easy to use and was designed according to Google's Material Design guidelines. It is coded entirely in JavaScript using [Electron](https://electron.atom.io/), [React](https://facebook.github.io/react/), [Redux](http://redux.js.org/) and many other new and exciting web-technologies.
-*Use at your own risk! (It's written in JavaScript for crying our loud)*
+An offline password-manager using AES-256, that allows you to store your passwords safely on your machine, while still being able to access them using your hashed (PBKDF2) master-password. Passwordmanager is easy to use and was designed according to Google's Material Design guidelines. It is coded entirely in JavaScript using [Electron](https://electron.atom.io/), [React](https://facebook.github.io/react/), [Redux](http://redux.js.org/) and many other new and exciting web-technologies.
+*Use at your own risk! (It's written in JavaScript for crying out loud)*
 
 ![Screenshot of the application](screenshot.png)
 
